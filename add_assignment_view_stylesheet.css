@@ -1,0 +1,48 @@
+body{
+    align-content: center;
+    padding-left: 33%;
+    padding-right: 33%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: darkcyan;
+}
+
+#container{
+    align-content: center;
+}
+
+.card-panel{
+    min-width: 450px;
+    text-align: center;
+}
+
+option{
+    width: 60%;
+}
+
+.left_side{
+
+}
+
+.container{
+    width: 100%;
+}
+
+.time_container{
+    overflow: auto;
+}
+
+div .start_time{
+    float: left;
+    width: 45%;
+}
+
+div .end_time{
+    float: right;
+    width: 45%;
+}
+.time_container input{
+    text-align: center;
+}
+
+
