@@ -1,0 +1,77 @@
+
+<!--
+ * Created by PhpStorm.
+ * User: paulm
+ * Date: 4/4/2017
+ * Time: 10:15 AM
+ -->
+
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel="stylesheet" href="signup_view_stylesheet.css">
+
+
+</head>
+<body>
+<div id = "container" class="card-panel hoverable">
+<h1>Sign Up</h1>
+
+<form class='form' action="signup.php" method="POST">
+    <table>
+        <tr>
+            <td>
+                <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+                <div class="input-field col s12" ><script> $(document).ready(function() {
+                        $('select').material_select();
+                    });</script>
+                        <select name = "SelectUserType">
+                            <option value="" >Choose a User Type</option>
+                            <option value="Student">Student</option>
+                            <option value="Instructor">Teacher</option>
+                            <option value="Guardian">Guardian</option>
+                        </select>
+                        <label></label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+
+            <td><input type="text" name="username" id="username" placeholder="User Name" maxlength="40"></td>
+        </tr>
+        <tr>
+
+            <td><input type="password" name="password" id="password" placeholder="Password" maxlength="25"></td>
+        </tr>
+        <tr>
+
+            <td><input type="password" name="password2" id="password2" placeholder="Confirm Password" maxlength="25"></td>
+        </tr>
+        <tr>
+
+            <td><input type="text" name="first_name" id="first_name" placeholder="First Name" maxlength="50"></td>
+        </tr>
+        <tr>
+
+            <td><input type="text" name="last_name" id="last_name" placeholder="Last Name" maxlength="50"></td>
+        </tr>
+
+    </table>
+    <!-- Dropdown Trigger -->
+
+    <button class="btn waves-effect waves-light" type="submit" >Add User</button>
+    <button class="btn waves-effect grey waves-light" type="submit" id="cancel_button" formaction="/EZPlanR_1.0.2/index.php" >Cancel</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
