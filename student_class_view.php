@@ -73,13 +73,14 @@
 			//connect to DB
 			include("includes/db_connection.php");
 
-			$q = "SELECT * FROM assignmentes WHERE assignment = '$assignment' order by code";
+			$q = "SELECT * FROM course";
 			$r = $conn->query($q);
 			
 			while ($row = $r->fetch_assoc()){
 				echo "<tr>";
-					echo "<td>".$row['assignment']."</td>";
-					echo "<td>".$row['grade']."</td>";
+                    echo "<td>".$row['Course_ID']."</td>";
+					echo "<td>".$row['Name']."</td>";
+					echo "<td>".$row['Meeting_Place']."</td>";
 				echo "</tr>";
 			}
 		?>					

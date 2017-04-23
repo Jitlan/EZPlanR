@@ -1,0 +1,54 @@
+
+body {
+    text-align: center;
+    background-color: darkcyan;
+    padding: 9%;
+}
+
+p {
+    font-size: 11px;
+    opacity: .6;
+}
+a{
+    font-size: 10px;
+}
+
+.card-panel {
+    width: 300px;
+}
+.input {
+    padding: 9px;
+    border: solid 5px #E5E5E5;
+    outline: 0;
+    font: normal 13px/100% Verdana, Tahoma, sans-serif;
+    width: 200px;
+}
+
+.form {
+    height: 0;
+    align-content: center;
+    color: #999999;
+}
+
+input {
+    padding: 9px;
+    border: solid 1px #E5E5E5;
+    outline: 0;
+    font: normal 13px/100% Verdana, Tahoma, sans-serif;
+    width: 200px;
+}
+
+.submit {
+    width: auto;
+    padding: 9px 15px;
+    background: #270c70;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+img{
+
+    size: 100px;
+    padding-bottom: 15px;
+
+
+}

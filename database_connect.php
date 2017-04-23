@@ -14,13 +14,14 @@ $database = "EZPlanR_DB";
 
 //connection to the database
 try{
+
     $connect = new PDO('mysql:host=localhost;dbname=EZPlanR_DB', $user, $pass);
     $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //header('Location:  http://' . $_SERVER['HTTP_HOST'] . '/EZPlanR_1.0.2/index.php');
 }
 catch(PDOException $e){
 
-    echo "No Database reached!";
+ 'failed to connect DB' . $conError->getMessage ();
+
 }
 
 

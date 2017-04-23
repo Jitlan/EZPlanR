@@ -7,17 +7,12 @@
  * Time: 10:44 AM
  */
 
-include ('add_assignment_view.php');
+session_start();
 
-//session variable check, to ensured page can only be accessed after login.
-//session_start();
-/*
-if (!isset($_SESSION['username'])) {
-    header('LOCATION: index.php');
-}
-else
-   // $classID = $_SESSION['classID'];
-   // $assignmentName = $_SESSION['assignmentName'];
+if ($_SESSION['User_Type'] !== "Instructor")
+    include('logout.php');
+
+include('add_assignment_view.php');
 
 if ($_SERVER['REQUEST_METHOD']=='POST') {
 
@@ -34,9 +29,11 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $error[] = "Please enter a start time.";
     if (!empty($_POST['end_time'])) {
         $end_time = $_POST['end_time'];
-            //if(var_dump($start_time<$end_time)==false) {
-                //$error[] = "Invalid end time! Please select an appropriate end time.";
-          //  }
+        echo $start_time;
+        echo $end_time;
+            if(var_dump($start_time<$end_time)==false) {
+                $error[] = "Invalid end time! Please select an appropriate end time.";
+            }
     } else
         $error[] = "Please enter an end time.";
     if (!empty($_POST['Description']))
@@ -50,12 +47,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     }
     else {
 
-        include('EZPlanR_Model.php');
-        addEvent($assignmentName, null, null , null , null , $description, $start_time, $end_time, null);
 
+        include('EZPlanR_Model.php');
+        addEvent($assignmentName, NULL, NULL, NULL, NULL, $description, $start_time, $end_time, NULL);
     }
 
-*/
+
 
 /*we neeeeeeeeeeeeeeeeeeeeeeed to figure out how we're going to handle rosters.
    if (!empty($_POST['username']))

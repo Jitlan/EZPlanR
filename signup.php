@@ -15,8 +15,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         else
             $error[] = "Please choose a user type.";
 
-        if (!empty($_POST['username']))
+        if (!empty($_POST['username'])) {
             $username = $_POST['username'];
+            /*$taken = usernameCheck($username);
+            if ($taken == true){
+                $error[] = "Username is already taken";
+            }*/
+        }
         else
             $error[] = "Please enter user name.";
 
@@ -43,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         else
             $error[] = "Please enter last name.";
 
+
+
         if (!empty($error)) {
             foreach ($error as $msg) {
                 echo $msg;
@@ -54,9 +61,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             include ('EZPlanR_Model.php');
             addUser($username, $last_name, $first_name, $password, $user_type);
 
-            //$test = " herpaderp";
-            //echo $test;
-           // header('Location:  http://' . $_SERVER['HTTP_HOST'] . '/EZPlanR_1.0.2/index.php');
+           header('Location:  http://' . $_SERVER['HTTP_HOST'] . '/EZPlanR_1.0.2/index.php');
 
         }
 

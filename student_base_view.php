@@ -9,7 +9,7 @@
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 
@@ -21,7 +21,7 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
 
 
     <title>EzPlanr</title>
@@ -97,6 +97,6 @@ echo "Welcome" . $_SESSION['username'];
         });// end of document ready
     })(jQuery); // end of jQuery name space
 </script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>

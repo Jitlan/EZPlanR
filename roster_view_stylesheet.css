@@ -1,29 +1,35 @@
 body{
-    align-content: center;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: darkcyan;
+     align-content: center;
+     padding-left: 2%;
+     padding-right: 2%;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     background-color: darkcyan;
+ }
+
+#container_select{
+    float: left;
+    height: 98%;
+    overflow-y:scroll;
+    width: 60%;
 }
 
-#container{
-    align-content: center;
+#container_selected{
+    float: right;
+    width: 35%;
 }
 
 .card-panel{
     min-width: 450px;
-    text-align: center;
-}
 
+
+}
 option{
     width: 60%;
 }
 
-.left_side{
-
+.responsive-table{
 }
-
-.container{
-    width: 100%;
+td{
+    padding-bottom: 1px;
 }

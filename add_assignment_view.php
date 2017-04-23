@@ -1,57 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: paulm
- * Date: 4/12/2017
- * Time: 10:35 AM
- */
-
-if (!isset($_SESSION['username'])) {
-    header('LOCATION: index.php');
-}
-else
-    // $classID = $_SESSION['classID'];
-    // $assignmentName = $_SESSION['assignmentName'];
-
-    if ($_SERVER['REQUEST_METHOD']=='POST') {
-
-        //retrieve form data
-        $error = array();
-
-        if (!empty($_POST['assignmentName']))
-            $assignmentName = $_POST['assignmentName'];
-        else
-            $error[] = "Please enter a name for the assignment.";
-        if (!empty($_POST['start_time']))
-            $start_time = $_POST['start_time'];
-        else
-            $error[] = "Please enter a start time.";
-        if (!empty($_POST['end_time'])) {
-            $end_time = $_POST['end_time'];
-            //if(var_dump($start_time<$end_time)==false) {
-            //$error[] = "Invalid end time! Please select an appropriate end time.";
-            //  }
-        } else
-            $error[] = "Please enter an end time.";
-        if (!empty($_POST['Description']))
-            $description = $_POST['Description'];
-    }
-if (!empty($error)) {
-    foreach ($error as $msg) {
-        echo $msg;
-        echo '<br>';
-    }
-}
-else {
-
-    include('EZPlanR_Model.php');
-    addEvent($assignmentName, null, null , null , null , $description, $start_time, $end_time, null);
-
-}
-
+if ($_SESSION['User_Type'] !== "Instructor")
+    include('logout.php');
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<script type="text/javascript" src="add_assignment_view_stylesheet.css"></script>
 
-<html>
 <head>
     <!--<header><font size = 32>Add Assignment</font></header>-->
 
@@ -66,6 +19,12 @@ else {
     <form action = "add_assignment.php" method = "post">
         <div>
             <tr>
+                <select name = "SelectCourse">
+                    <option value="" >Choose a Course for this Assignment</option>
+
+                </select>
+            </tr>
+            <tr>
                 <td><input type="text" name=assignmentName placeholder="Assignment Name"></td>
             </tr>
             <tr>
@@ -75,12 +34,22 @@ else {
                     <input type="radio" name="assignmentType" ></td>-->
             </tr>
             <tr>
-                <div class = time_container>
-                    <div class = "start_time">Start Time:
-                        <input type = "datetime-local" name = "start_time" placeholder="Start Time">
+                <div class = date_container>
+                    <div class = "start_date">Start Time:
+                        <input type = "date" name = "start_date">
                     </div>
-                    <div class = "end_time">End Time:
-                        <input type = "datetime-local" name = "end_time" >
+                    <div class = "end_date">End Time:
+                        <input type = "date" name = "end_date">
+                    </div>
+                </div>
+            </tr>
+            <tr>
+                <div class = time_container>
+                    <div class = "start_time">
+                        <input type = "date" name = "start_time">
+                    </div>
+                    <div class = "end_time">
+                        <input type = "date" name = "end_time">
                     </div>
                 </div>
             </tr>
@@ -98,7 +67,7 @@ else {
                 <td>
                     <br>
                     <button class="btn waves-effect waves-light" type="submit" >Add Assignment</button>
-                    <button class="btn waves-effect grey waves-light" type="submit" id="cancel_button" formaction="/EZPlanR_1.0.2/home.php" >Cancel</button>
+                    <button class="btn waves-effect grey waves-light" type="submit" id="cancel_button" formaction="/EZPlanR_1.0.2/teacher_base_view.php" >Cancel</button>
 
                 </td>
             </tr>
