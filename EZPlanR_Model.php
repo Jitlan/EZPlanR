@@ -172,9 +172,7 @@ function addRoster($Roster_Name)
 {
     global $connect;
     $insertRoster = "INSERT INTO roster(Roster_Name) VALUE ('$Roster_Name')";
-    echo "reached the preparation of the query";
     $connect->query($insertRoster);
-    echo "reached bottom of add roster and queried";
 
 function getRoster($roster){
 
@@ -194,7 +192,6 @@ function fillRoster($rostername, $student){
     $found = $connect->query($findRosterID);
     echo "queried for the rosterID";
     $hereItIs = $found->fetchColumn(0);
-    echo "found the rosterID";
 
     $addToStudentRosterSQL = "INSERT INTO student_roster (StudentID, RosterID) VALUES ('$student','$hereItIs')";
     echo "queried prepared to insert students into rosters";
@@ -209,14 +206,21 @@ function addCourse($courseName, $start_time, $end_time, $roster, $meetingPlace, 
 
         global $connect;
 
-        $result = $connect->query("INSERT INTO course (Name,Meeting_Start_Time,Meeting_End_Time,Roster_ID,Meeting_Place,Instructor) 
-            VALUES ('$courseName','$start_time','$end_time','$roster','$meetingPlace','$instructor')");
+        $query = "INSERT INTO course (Name,Meeting_Start_Time,Meeting_End_Time,Roster_ID,Meeting_Place,Instructor) 
+            VALUES ('$courseName','$start_time','$end_time','$roster','$meetingPlace','$instructor')";
 
-        if ($result) {
-            echo "successful!";
-        } else {
-            echo "bad, very bad";
-        }
+        $connect->query($query);
 
 }
+function getCourse($courseName){
+
+    global $connect;
+    $query = "SELECT Course_ID FROM course WHERE Name = '$courseName'";
+    $result = $connect->query($query);
+    $foundCourse =  $result->fetchColumn(0);
+
+    return $foundCourse;
+
+}
+
 

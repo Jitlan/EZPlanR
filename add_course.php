@@ -1,13 +1,13 @@
 <?php
 
 
-include ('add_course_view.html');
+include('add_course_view.php');
 
 session_start();
 $instructorID = $_SESSION['Instructor_ID'];
 
-	if ($_SERVER['REQUEST_METHOD']=='POST'){		
-		//retrieve form data | edit here
+	if ($_SERVER['REQUEST_METHOD']=='POST'){
+
 		$error = array();
 
 		if (!empty($_POST['courseName']))
@@ -40,16 +40,20 @@ $instructorID = $_SESSION['Instructor_ID'];
 
 			global $connect;
 
-			echo $courseName;
+
+			/*echo $courseName;
             echo $meetingPlace;
 			echo $start_time;
-			echo $end_time;
-			echo $meetingPlace;
+			echo $end_time;*/
 
             include ('EZPlanR_Model.php');
 
-            addCourse($courseName, $start_time, $end_time, 1, $meetingPlace, $instructorID);
+            addCourse($courseName, $start_time, $end_time, 0 , $meetingPlace, $instructorID);
 
-            header('Location:  http://' . $_SERVER['HTTP_HOST'] . '/EZPlanR_1.0.2/teacher_base.php');
+            $_SESSION['Course_ID'] = getCourse($courseName);
+
+            header('Location: /EZPlanR_1.0.2/add_Roster.php');
+            exit;
+
 		}
 	}

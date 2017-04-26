@@ -31,15 +31,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["Last_Name"] = $row['Last_Name'];
 
         if ($_SESSION["User_Type"] == "Student") {
+
+            $s_User_ID = $_SESSION['User_ID'];
+            foreach($connect->query("SELECT * FROM student WHERE User_ID = $s_User_ID ")as $row1){
+                $_SESSION["Student_ID"] = $row1['Student_ID'];
+            }
             header('Location:  http://' . $_SERVER['HTTP_HOST'] . '/EZPlanR_1.0.2/student_base_view.php');
+
             exit;
 
         } else if ($_SESSION["User_Type"] == "Instructor"){
-
+            $i_User_ID = $_SESSION['User_ID'];
+            foreach($connect->query("SELECT * FROM instructor WHERE User_ID = $i_User_ID ")as $row2){
+                $_SESSION["Instructor_ID"] = $row2['Instructor_ID'];
+            }
             header('Location:  http://' . $_SERVER['HTTP_HOST'] . '/EZPlanR_1.0.2/teacher_base.php');
             exit;
 
         } else if ($_SESSION["User_Type"] == "Guardian") {
+            $g_User_ID = $_SESSION['User_ID'];
+            foreach($connect->query("SELECT * FROM guardian WHERE User_ID = $g_User_ID ")as $row3){
+                $_SESSION["Guardian_ID"] = $row3['Guardian_ID'];
+            }
             header('Location:  http://' . $_SERVER['HTTP_HOST'] . '/EZPlanR_1.0.2/guardian_view.php');
             exit;
         }

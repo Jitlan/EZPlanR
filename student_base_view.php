@@ -5,83 +5,113 @@
  * Date: 4/12/2017
  * Time: 9:26 AM
  */
-
+include ('EZPlanR_Model.php');
 ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
-
-
-    <title>EzPlanr</title>
-
-
+    <title>EZ-PlanR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel="stylesheet" href="teacher_base_view_stylesheet.css">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 
-
-
 <body>
-<nav>
-    <div class="nav-wrapper cyan" >
 
-        <a href="#1" data-activates="slide-out" class="brand-logo"><i class="material-icons">menu</i></a>
+<div id="content">
+    <nav>
+        <div class="nav-wrapper cyan" >
+
+            <a href="#1" data-activates="slide-out" class="brand-logo"><img class="responsive-img" width = "65" height = "65" src="EZPlanR_SmallLogo.png" </img></a>
 
 
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li>
-                <a href="sass.html">Sass</a>
-            </li>
-            <li>
-                <a href="badges.html">Components</a>
-            </li>
-            <li>
-                <a href="collapsible.html">JavaScript</a>
-            </li>
-        </ul>
-        <ul id="slide-out" class="side-nav">
-            <li>
-                <div class="userView">
-                    <a href='add_assignment.php'>Add Assignment</a>
-                    <a href="add_Roster.php">Add Roster</a>
-                    <a href='index.php'>Logout Here</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
+            <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+            <ul id="slide-out" class="side-nav">
+                <li>
+                    <div class="userView">
+                        <div>
+                            <img class = "SideNavLogo" src="EZPlanR_LargeLogo1.png" width="100% " </img>
+                        </div>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li>
+                    <div>
+                        <a href='#'>View Classes</a>
+                        <a href="##">View Grades</a>
+                        <a href = "logout.php" value = "Logout" >Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
 <?php
+session_start();
+echo "<h1> Welcome, " . $_SESSION['username'];
+        $First_Name = $_SESSION['First_Name'];
+        echo $First_Name, "</h1>";
 
-echo "Welcome" . $_SESSION['username'];
 ?>
-<div id="content" >
-    <h1>View Classes</h1>
+
+<div id = "container_selected" class="card-panel">
+    <table class="highlight responsive-table">
+        <thead>
+        <tr>
+            <th>Select Course</th>
+            <th>Class Name</th>
+            <th>Class ID</th>
+        </tr>
+        </thead>
+        <?php
+
+        global $connect;
+/*
+        $query = "SELECT * FROM course WHERE Name ='$Name' ";
+        $result = $connect->query($query);
+        $eventFound = $result->fetchColumn(0);
 
 
-    <center>
-        <table>
-            <col width="50">
-            <col width="50">
+        echo $eventFound;
+        echo 'I am after the query and after the fetch';
+*/        $SelectID = 1;
 
-            <tr>
-                <th> Class </th>
-                <th> Grade </th>
-            </tr>
+        foreach($connect->query("SELECT * FROM course")as $row){
 
+            echo'<tr name="'.$row['Course_ID'].'" onclick="document.location=\'\';">';
+
+           echo '<td>',$row['Name'],'</td>',
+            '<td>',$row['Course_ID'],'</td>';
+
+            echo'</tr>';
+
+            $SelectID++;
+
+        }
+
+        $SelectID = $row['Course_ID'];
+/*
+        foreach($row as $megadooty) {
+
+            // $arraySelected[] = $megadooty['Student_ID'];
+
+            $arraySelected[] = $megadooty['Course_ID'];
+            echo '<tr> <td>', $megadooty['Course_ID'], '</td>',
+            '<td>', $megadooty['Name'], '</td>';
+            echo '</tr>';
+        }*/
+        /*
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row['Roster_ID'] . "</td>";
+                    echo "<td>" . $row['Name'] . "</td>";
+                    echo "</tr>";
+        */
+
+        ?>
 
         </table>
-    </center>
 </div> <!--content -->
 
 <div id="footer">

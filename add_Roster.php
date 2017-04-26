@@ -6,19 +6,8 @@ include ('EZPlanR_Model.php');
 include ('roster_view.php');
 
 
-echo'<form id = "createRosterForm" name="addRoster" action="finalize_roster.php" method="POST">';
 
-echo'<div id = "container_selected" class="card-panel hoverable">';
-echo'<table class="highlight responsive-table">';
-echo'<thead>';
-echo'<input type="text" name="RosterName" id="RosterName" placeholder="Please enter a roster name." maxlength="20">
 
-                <tr>                
-                    <th>Student ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                </tr>';
-echo '</thead>';
 
 function IsChecked($checkboxname,$value){
     if(!empty($_POST[$checkboxname])){//posted checkboxes, not every checkbox
@@ -37,6 +26,19 @@ function IsChecked($checkboxname,$value){
     echo "<br>";
 global $connect;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    echo'<form id = "createRosterForm" name="addRoster" action="finalize_roster.php" method="POST">';
+
+    echo'<div id = "container_selected" class="card-panel hoverable">';
+    echo'<table class="highlight responsive-table">';
+    echo'<thead>';
+    echo'<input type="text" name="RosterName" id="RosterName" placeholder="Please enter a roster name." maxlength="20">
+
+                <tr>                
+                    <th>Student ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>';
+    echo '</thead>';
        if(!empty($_POST['students'])){
            $i = 1;
 
@@ -49,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                    echo '<div id="selection">';
 
                    echo '<tr>
-                            <td id = "selectedStudents[]">', $megadooty['Student_ID'], '</td>',
+                            <td>', $megadooty['Student_ID'], '</td>',
                            '<td>', $megadooty['First_Name'], '</td>',
                            '<td>', $megadooty['Last_Name'], '</td>';
                    echo '</tr>';
@@ -57,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                }
            }
        }
-    echo '<button class="btn waves-effect waves-light" name="FinalizeRoster" type="submit">Finalize Roster</button>';
+    echo '<button class="btn waves-effect waves-light" name="FinalizeRoster" type="submit" >Finalize Roster</button>';
     print_r(array_values($arraySelected));
 
     //I HATE MYSELF
